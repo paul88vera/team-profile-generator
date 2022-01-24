@@ -1,19 +1,31 @@
-const generateTeamName = (team) => {
-  // const {teamName} = team;
-  if (!team) {
-    return `
-    <h1 style="margin: auto; width: 50%; padding-top: 10px; font-size: 2em">My Team</h1>
-    `;
+const Manager = require('../lib/Manager');
+const Engineer = require('../lib/Engineer');
+const Intern = require('../lib/Intern');
+
+function addCards(manageData) {
+  let cards = []
+  for(let i = 0; i < manageData.length; i++) {
+    const employeeArray = manageData[i];
+    switch(employeeArray.getRole()) {
+      case 'Manager':
+        const manager = new Manager(employeeArray.id, employeeArray.name, employeeArray.email, employeeArray.offNumber);
+        cards.push(generateManager(manager));
+        break;
+      case 'Engineer':
+        const engineer = new Engineer(employeeArray.id, employeeArray.name, employeeArray.email, employeeArray.github);
+        cards.push(generateEngineer(engineer));
+        break;
+      case 'Intern':
+        const intern = new Intern(employeeArray.id, employeeArray.name, employeeArray.email, employeeArray.school);
+        cards.push(generateIntern(intern));
+        break;
+    }
   }
+  return cards.join(``)
+}
 
-  return `
- <h1 style="margin: auto; width: 50%; padding-top: 10px; font-size: 2em">${teamName}</h1>
- `;
-};
-
-const generateManager = (Manager) => {
-  const { name, id, email, ...officeNumber } = Manager;
-  if (!manager) {
+let generateManager = (Manager) => {
+  if (!Manager) {
     return "";
   }
 
@@ -23,16 +35,16 @@ const generateManager = (Manager) => {
               <div class="card-title bg-primary" style="height:50px; margin:auto; padding:10px;"><i class="fas fa-mug-hot"></i> MANAGER</div>
               <ul class="list-group text-align-left">
                 <li class="list-group-item">
-                  Name: ${name}
+                  Name: ${Manager.getName()}
                 </li>
                 <li class="list-group-item">
-                  ID: ${id}
+                  ID: ${Manager.getId()}
                 </li>
                 <li class="list-group-item">
-                  Email: ${email}
+                  Email: ${Manager.getEmail()}
                 </li>
                 <li class="list-group-item">
-                  Office #: ${officeNumber}
+                  Office #: ${Manager.getOfficeNumber()}
                 </li>
               </ul>
             </div>
@@ -40,8 +52,7 @@ const generateManager = (Manager) => {
  `;
 };
 
-const generateEngineer = (Engineer) => {
-  const { name, id, email, ...github } = Engineer;
+let generateEngineer = (Engineer) => {
   if (!Engineer) {
     return "";
   }
@@ -52,16 +63,16 @@ const generateEngineer = (Engineer) => {
              <div class="card-title bg-primary" style="height:50px; margin:auto; padding:10px;"><i class="fas fa-glasses"></i> ENGINEER</div>
              <ul class="list-group">
                <li class="list-group-item">
-                Name: ${name}
+                Name: ${Engineer.getName()}
                </li>
                <li class="list-group-item">
-                ID: ${id}
+                ID: ${Engineer.getId()}
                </li>
                <li class="list-group-item">
-                Email: ${email}
+                Email: ${Engineer.getEmail()}
                </li>
                <li class="list-group-item">
-                GitHub Username: ${github}
+                GitHub Username: ${Engineer.github()}
                </li>
              </ul>
            </div>
@@ -69,8 +80,7 @@ const generateEngineer = (Engineer) => {
  `;
 };
 
-const generateIntern = (Intern) => {
-  const { name, id, email, ...school } = Intern;
+let generateIntern = (Intern) => {
   if (!Intern) {
     return "";
   }
@@ -82,26 +92,25 @@ const generateIntern = (Intern) => {
      <i class="fas fa-graduation-cap"></i> INTERN</div>
    <ul class="list-group">
      <li class="list-group-item">
-      Name: ${name}
+      Name: ${Intern.getName()}
      </li>
      <li class="list-group-item">
-      ID: ${id}
+      ID: ${Intern.getId()}
      </li>
      <li class="list-group-item">
-      Email: ${email}
+      Email: ${Intern.getEmail()}
      </li>
      <li class="list-group-item">
-      School: ${school}
+      School: ${Intern.getSchool()}
      </li>
    </ul>
  </div>
 </div>
  `;
 };
-
-const generateMarkdown = (templateData) => {
-  const { teamName, Manager, Engineer, ...Intern } = templateData;
-
+function addEmployees(manageData) {
+// const generateMarkdown = (templateData) => {
+//  console.log(templateData);
   return `
  <!DOCTYPE html>
 <html lang="en">
@@ -120,18 +129,16 @@ const generateMarkdown = (templateData) => {
     />
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/84543325b5.js" crossorigin="anonymous"></script>
-    <title>My Team</title>
+    <h1 style="margin: auto; width: 50%; padding-top: 10px; font-size: 2em">My Team</h1>
   </head>
   <body style="font-family: 'Dongle', sans-serif; font-size:1.5em;">
     <header align="center" class="bg-dark text-white" style="height:80px;">
-      ${generateTeamName(teamName)}
+      My Team
     </header>
     <section align="center" style="height:auto;">
       <div class="container" style="height:auto; margin-top:50px;">
         <div class="row d-inline-flex gap-4 justify-content-center">
-          ${generateManager(Manager)}
-          ${generateEngineer(Engineer)}
-          ${generateIntern(Intern)}
+          ${addCards(manageData)}
         </div>
       </div>
     </section>
@@ -139,4 +146,4 @@ const generateMarkdown = (templateData) => {
 </html>
  `;
 }
-module.exports = generateMarkdown;
+module.exports = addEmployees;

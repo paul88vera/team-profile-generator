@@ -2,8 +2,8 @@ const inquirer = require("inquirer");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-const generatePage = require("./src/template-page");
-const { readFile, writeFile } = require("./utils/generate-site");
+const addEmployees = require("./src/template-page");
+const fs = require('fs');
 const manageData = [];
 
 function addTeam() {
@@ -24,12 +24,12 @@ function addTeam() {
       },
     ])
     .then((answers) => {
+     manageData.push(answers);
       if (answers.teamName) {
         employeeQuestions();
         return true;
       } else {
-        console.log("Please enter a team name");
-        return false;
+        writeToFile('dist/newIndex.html', addEmployees(manageData));
       }
     });
 }
@@ -128,8 +128,7 @@ function addManager(moreAnswers) {
       if (answers.addMore === true) {
         employeeQuestions();
       } else {
-        renderPage();
-        console.log("Created myTeam.html");
+        writeToFile('dist/index.html', addEmployees(manageData));
       }
     });
 }
@@ -159,8 +158,7 @@ const addEngineer = (basicAnswers) => {
       if (answers.addMore === true) {
         employeeQuestions();
       } else {
-        renderPage();
-        console.log("Created myTeam.html");
+        writeToFile('dist/index.html', addEmployees(manageData));
       }
     });
 };
@@ -190,18 +188,16 @@ const addIntern = (internAnswers) => {
       if (answers.addMore === true) {
         employeeQuestions();
       } else {
-        renderPage();
-        console.log("Created myTeam.html");
+        writeToFile('dist/index.html', addEmployees(manageData));
       }
     });
 };
 
-const renderPage = () => {
-  console.log(manageData);
-  
-  const generate = generatePage(manageData);
-  readFile(generate);
-  writeFile(generate);
-}
+function writeToFile(filename,data) {
+  fs.writeFile(filename, data, (err) => {
+      if(err) throw err;
+      console.log('File successfully saved!')
+  })
+};
 
 addTeam();
