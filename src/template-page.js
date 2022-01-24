@@ -8,7 +8,7 @@ function addCards(manageData) {
     const employeeArray = manageData[i];
     switch(employeeArray.getRole()) {
       case 'Manager':
-        const manager = new Manager(employeeArray.id, employeeArray.name, employeeArray.email, employeeArray.offNumber);
+        const manager = new Manager(employeeArray.id, employeeArray.name, employeeArray.email, employeeArray.officeNumber);
         cards.push(generateManager(manager));
         break;
       case 'Engineer':
