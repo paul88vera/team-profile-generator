@@ -1,6 +1,6 @@
-const generateTeamName = (aboutTeam) => {
-  const { teamName } = aboutTeam;
-  if (!aboutTeam) {
+const generateTeamName = (team) => {
+  // const {teamName} = team;
+  if (!team) {
     return `
     <h1 style="margin: auto; width: 50%; padding-top: 10px; font-size: 2em">My Team</h1>
     `;
@@ -11,9 +11,9 @@ const generateTeamName = (aboutTeam) => {
  `;
 };
 
-const generateManager = (aboutManager) => {
-  const { manName, ...officeNumber } = aboutManager;
-  if (!aboutManager) {
+const generateManager = (Manager) => {
+  const { name, id, email, ...officeNumber } = Manager;
+  if (!manager) {
     return "";
   }
 
@@ -23,13 +23,13 @@ const generateManager = (aboutManager) => {
               <div class="card-title bg-primary" style="height:50px; margin:auto; padding:10px;"><i class="fas fa-mug-hot"></i> MANAGER</div>
               <ul class="list-group text-align-left">
                 <li class="list-group-item">
-                  Name: ${manName}
+                  Name: ${name}
                 </li>
                 <li class="list-group-item">
-                  ID: ${manId}
+                  ID: ${id}
                 </li>
                 <li class="list-group-item">
-                  Email: ${manEmail}
+                  Email: ${email}
                 </li>
                 <li class="list-group-item">
                   Office #: ${officeNumber}
@@ -40,9 +40,9 @@ const generateManager = (aboutManager) => {
  `;
 };
 
-const generateEngineer = (aboutEngineer) => {
-  const { engName, ...github } = aboutEngineer;
-  if (!aboutEngineer) {
+const generateEngineer = (Engineer) => {
+  const { name, id, email, ...github } = Engineer;
+  if (!Engineer) {
     return "";
   }
 
@@ -52,13 +52,13 @@ const generateEngineer = (aboutEngineer) => {
              <div class="card-title bg-primary" style="height:50px; margin:auto; padding:10px;"><i class="fas fa-glasses"></i> ENGINEER</div>
              <ul class="list-group">
                <li class="list-group-item">
-                Name: ${engName}
+                Name: ${name}
                </li>
                <li class="list-group-item">
-                ID: ${engId}
+                ID: ${id}
                </li>
                <li class="list-group-item">
-                Email: ${engEmail}
+                Email: ${email}
                </li>
                <li class="list-group-item">
                 GitHub Username: ${github}
@@ -69,9 +69,9 @@ const generateEngineer = (aboutEngineer) => {
  `;
 };
 
-const generateIntern = (aboutIntern) => {
-  const { inName, ...school } = aboutIntern;
-  if (!aboutIntern) {
+const generateIntern = (Intern) => {
+  const { name, id, email, ...school } = Intern;
+  if (!Intern) {
     return "";
   }
 
@@ -82,13 +82,13 @@ const generateIntern = (aboutIntern) => {
      <i class="fas fa-graduation-cap"></i> INTERN</div>
    <ul class="list-group">
      <li class="list-group-item">
-      Name: ${inName}
+      Name: ${name}
      </li>
      <li class="list-group-item">
-      ID: ${inId}
+      ID: ${id}
      </li>
      <li class="list-group-item">
-      Email: ${inEmail}
+      Email: ${email}
      </li>
      <li class="list-group-item">
       School: ${school}
@@ -99,8 +99,8 @@ const generateIntern = (aboutIntern) => {
  `;
 };
 
-module.exports = (manageData) => {
-  const { aboutTeam, manager, engineer, ...intern } = manageData;
+const generateMarkdown = (templateData) => {
+  const { teamName, Manager, Engineer, ...Intern } = templateData;
 
   return `
  <!DOCTYPE html>
@@ -124,18 +124,19 @@ module.exports = (manageData) => {
   </head>
   <body style="font-family: 'Dongle', sans-serif; font-size:1.5em;">
     <header align="center" class="bg-dark text-white" style="height:80px;">
-      ${generateTeamName(aboutTeam)}
+      ${generateTeamName(teamName)}
     </header>
     <section align="center" style="height:auto;">
       <div class="container" style="height:auto; margin-top:50px;">
         <div class="row d-inline-flex gap-4 justify-content-center">
-          ${generateManager(manager)}
-          ${generateEngineer(engineer)}
-          ${generateIntern(intern)}
+          ${generateManager(Manager)}
+          ${generateEngineer(Engineer)}
+          ${generateIntern(Intern)}
         </div>
       </div>
     </section>
   </body>
 </html>
  `;
-};
+}
+module.exports = generateMarkdown;
