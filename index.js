@@ -2,11 +2,12 @@ const inquirer = require("inquirer");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-const addEmployees = require("./src/template-page");
 const fs = require('fs');
+const addEmployees = require("./src/template-page");
+
 const manageData = [];
 
-function addTeam() {
+const addTeam = () => {
   inquirer
     .prompt([
       {
@@ -29,7 +30,7 @@ function addTeam() {
         employeeQuestions();
         return true;
       } else {
-        writeToFile('dist/newIndex.html', addEmployees(manageData));
+        writeToFile('dist/index.html', addEmployees(manageData));
       }
     });
 }
@@ -42,7 +43,7 @@ const employeeQuestions = () => {
         name: "role",
         message: "Employee: What is your role here?",
         choices: ["Manager", "Engineer", "Intern"],
-        default: false,
+        default: false
       },
       {
         type: "input",
@@ -95,7 +96,7 @@ const employeeQuestions = () => {
     });
 };
 
-function addManager(moreAnswers) {
+const addManager = (managerAnswers) => {
   inquirer
     .prompt([
       {
@@ -114,50 +115,52 @@ function addManager(moreAnswers) {
       {
         type: "confirm",
         name: "addMore",
-        message: "Manager: Would you like to add an Engineer or Intern?",
+        message: "Manager: Would you like to add an Engineer or Intern?"
       },
     ])
     .then(function (answers) {
       const newManager = new Manager(
-        moreAnswers.name,
-        moreAnswers.id,
-        moreAnswers.email,
+        managerAnswers.name,
+        managerAnswers.id,
+        managerAnswers.email,
         answers.officeNumber
       );
       manageData.push(newManager);
       if (answers.addMore === true) {
         employeeQuestions();
       } else {
+        console.log(manageData);
         writeToFile('dist/index.html', addEmployees(manageData));
       }
     });
 }
 
-const addEngineer = (basicAnswers) => {
+const addEngineer = (engineerAnswers) => {
   inquirer
     .prompt([
       {
         type: "input",
         name: "github",
-        message: "Engineer: What is their GitHub username?",
+        message: "Engineer: What is their GitHub username?"
       },
       {
         type: "confirm",
         name: "addMore",
-        message: "Manager: Would you like to add an Engineer or Intern?",
+        message: "Manager: Would you like to add an Engineer or Intern?"
       },
     ])
     .then(function (answers) {
       const newEngineer = new Engineer(
-        basicAnswers.name,
-        basicAnswers.id,
-        basicAnswers.email,
+        engineerAnswers.name,
+        engineerAnswers.id,
+        engineerAnswers.email,
         answers.github
       );
       manageData.push(newEngineer);
       if (answers.addMore === true) {
         employeeQuestions();
       } else {
+        console.log(manageData);
         writeToFile('dist/index.html', addEmployees(manageData));
       }
     });
@@ -169,12 +172,12 @@ const addIntern = (internAnswers) => {
       {
         type: "input",
         name: "school",
-        message: "Intern: What school do they attend?",
+        message: "Intern: What school do they attend?"
       },
       {
         type: "confirm",
         name: "addMore",
-        message: "Manager: Would you like to add an Engineer or Intern?",
+        message: "Manager: Would you like to add an Engineer or Intern?"
       },
     ])
     .then(function (answers) {
@@ -188,6 +191,7 @@ const addIntern = (internAnswers) => {
       if (answers.addMore === true) {
         employeeQuestions();
       } else {
+        console.log(manageData);
         writeToFile('dist/index.html', addEmployees(manageData));
       }
     });
@@ -196,7 +200,7 @@ const addIntern = (internAnswers) => {
 function writeToFile(filename,data) {
   fs.writeFile(filename, data, (err) => {
       if(err) throw err;
-      console.log('File successfully saved!')
+      console.log('File successfully saved!');
   })
 };
 
