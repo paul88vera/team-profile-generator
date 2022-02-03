@@ -17,32 +17,29 @@ function addCards(manageData) {
   let cards = [];
   for (let i = 0; i < manageData.length; i++) {
     const employeeArray = manageData[i];
-    switch (employeeArray.getRole()) {
-      case "Manager":
+    switch(employeeArray.getRole()) {
+      case 'Manager':
         const manager = new Manager(
-          employeeArray.id,
-          employeeArray.name,
-          employeeArray.email,
-          employeeArray.officeNumber
-        );
+          employeeArray.name, 
+          employeeArray.id, 
+          employeeArray.email, 
+          employeeArray.officeNumber);
         cards.push(generateManager(manager));
         break;
-      case "Engineer":
+      case 'Engineer':
         const engineer = new Engineer(
-          employeeArray.id,
-          employeeArray.name,
-          employeeArray.email,
-          employeeArray.github
-        );
+          employeeArray.name, 
+          employeeArray.id, 
+          employeeArray.email, 
+          employeeArray.github);
         cards.push(generateEngineer(engineer));
         break;
-      case "Intern":
+      case 'Intern':
         const intern = new Intern(
-          employeeArray.id,
-          employeeArray.name,
-          employeeArray.email,
-          employeeArray.school
-        );
+          employeeArray.name, 
+          employeeArray.id, 
+          employeeArray.email, 
+          employeeArray.school);
         cards.push(generateIntern(intern));
         break;
     }
@@ -70,7 +67,7 @@ let generateManager = (Manager) => {
                   Email: ${Manager.getEmail()}
                 </li>
                 <li class="list-group-item">
-                  Office #: ${Manager.getOfficeNumber()}
+                  Office#: ${Manager.getOfficeNumber()}
                 </li>
               </ul>
             </div>
@@ -155,12 +152,11 @@ let addEmployees = (manageData) => {
       crossorigin="anonymous"
     />
     <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/84543325b5.js" crossorigin="anonymous"></script>
-    <h1 style="margin: auto; width: 50%; padding-top: 10px; font-size: 2em">My Team</h1>
+    <script src="https://kit.fontawesome.com/84543325b5.js" crossorigin="anonymous"></script> 
   </head>
   <body style="font-family: 'Dongle', sans-serif; font-size:1.5em;">
     <header align="center" class="bg-dark text-white" style="height:80px;">
-      My Team
+     <h1 style="margin: auto; width: 50%; padding-top: 10px; font-size: 2em">My Team</h1> 
     </header>
     <section align="center" style="height:auto;">
       <div class="container" style="height:auto; margin-top:50px;">
