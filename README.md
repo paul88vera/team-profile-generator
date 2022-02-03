@@ -2,7 +2,7 @@
   # Team Profile Generator
 
   ## Description
-  This application asks simple questions about the employees you want to add or remove, and generates professional team cards.
+  This application will ask simple questions about your team and will generate professional team cards with the information provided.
 
   ## Table of Contents
   - [Installation](#installation)

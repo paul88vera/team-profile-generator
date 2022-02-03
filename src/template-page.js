@@ -10,21 +10,13 @@ fs.readFile(path.join(__dirname, 'index.js'), 'utf-8', (err, data) => {
   console.log(data, 'from template-page');
 })
 
-
-
-
 function addCards(manageData) {
   let cards = [];
   for (let i = 0; i < manageData.length; i++) {
     const employeeArray = manageData[i];
-    switch (employeeArray.getRole()) {
-      case "Manager":
-        const manager = new Manager(
-          employeeArray.id,
-          employeeArray.name,
-          employeeArray.email,
-          employeeArray.officeNumber
-        );
+    switch(employeeArray.getRole()) {
+      case 'Manager':
+        const manager = new Manager(employeeArray.id, employeeArray.name, employeeArray.email, employeeArray.officeNumber);
         cards.push(generateManager(manager));
         break;
       case "Engineer":
@@ -155,12 +147,11 @@ let addEmployees = (manageData) => {
       crossorigin="anonymous"
     />
     <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/84543325b5.js" crossorigin="anonymous"></script>
-    <h1 style="margin: auto; width: 50%; padding-top: 10px; font-size: 2em">My Team</h1>
+    <script src="https://kit.fontawesome.com/84543325b5.js" crossorigin="anonymous"></script> 
   </head>
   <body style="font-family: 'Dongle', sans-serif; font-size:1.5em;">
     <header align="center" class="bg-dark text-white" style="height:80px;">
-      <h1>$</h1>
+     <h1 style="margin: auto; width: 50%; padding-top: 10px; font-size: 2em">My Team</h1> 
     </header>
     <section align="center" style="height:auto;">
       <div class="container" style="height:auto; margin-top:50px;">
