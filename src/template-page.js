@@ -1,27 +1,53 @@
-const Manager = require('../lib/Manager');
-const Engineer = require('../lib/Engineer');
-const Intern = require('../lib/Intern');
+const Manager = require("../lib/Manager");
+const Engineer = require("../lib/Engineer");
+const Intern = require("../lib/Intern");
+const fs = require('fs');
+const path = require('path');
+
+fs.readFile(path.join(__dirname, 'index.js'), 'utf-8', (err, data) => {
+  if(err) throw err;
+
+  console.log(data, 'from template-page');
+})
+
+
+
 
 function addCards(manageData) {
-  let cards = []
-  for(let i = 0; i < manageData.length; i++) {
+  let cards = [];
+  for (let i = 0; i < manageData.length; i++) {
     const employeeArray = manageData[i];
-    switch(employeeArray.getRole()) {
-      case 'Manager':
-        const manager = new Manager(employeeArray.id, employeeArray.name, employeeArray.email, employeeArray.officeNumber);
+    switch (employeeArray.getRole()) {
+      case "Manager":
+        const manager = new Manager(
+          employeeArray.id,
+          employeeArray.name,
+          employeeArray.email,
+          employeeArray.officeNumber
+        );
         cards.push(generateManager(manager));
         break;
-      case 'Engineer':
-        const engineer = new Engineer(employeeArray.id, employeeArray.name, employeeArray.email, employeeArray.github);
+      case "Engineer":
+        const engineer = new Engineer(
+          employeeArray.id,
+          employeeArray.name,
+          employeeArray.email,
+          employeeArray.github
+        );
         cards.push(generateEngineer(engineer));
         break;
-      case 'Intern':
-        const intern = new Intern(employeeArray.id, employeeArray.name, employeeArray.email, employeeArray.school);
+      case "Intern":
+        const intern = new Intern(
+          employeeArray.id,
+          employeeArray.name,
+          employeeArray.email,
+          employeeArray.school
+        );
         cards.push(generateIntern(intern));
         break;
     }
   }
-  return cards.join(``)
+  return cards.join(``);
 }
 
 let generateManager = (Manager) => {
@@ -108,9 +134,10 @@ let generateIntern = (Intern) => {
 </div>
  `;
 };
-function addEmployees(manageData) {
-// const generateMarkdown = (templateData) => {
-//  console.log(templateData);
+
+let addEmployees = (manageData) => {
+  // const generateMarkdown = (manageData) => {
+  //  console.log(manageData);
   return `
  <!DOCTYPE html>
 <html lang="en">
@@ -145,5 +172,6 @@ function addEmployees(manageData) {
   </body>
 </html>
  `;
-}
+};
+
 module.exports = addEmployees;
