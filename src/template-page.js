@@ -16,13 +16,17 @@ function addCards(manageData) {
     const employeeArray = manageData[i];
     switch(employeeArray.getRole()) {
       case 'Manager':
-        const manager = new Manager(employeeArray.id, employeeArray.name, employeeArray.email, employeeArray.officeNumber);
+        const manager = new Manager(
+          employeeArray.name,
+          employeeArray.id,
+          employeeArray.email,
+          employeeArray.officeNumber);
         cards.push(generateManager(manager));
         break;
       case "Engineer":
         const engineer = new Engineer(
-          employeeArray.id,
           employeeArray.name,
+          employeeArray.id,
           employeeArray.email,
           employeeArray.github
         );
@@ -30,8 +34,8 @@ function addCards(manageData) {
         break;
       case "Intern":
         const intern = new Intern(
-          employeeArray.id,
           employeeArray.name,
+          employeeArray.id,
           employeeArray.email,
           employeeArray.school
         );
@@ -128,8 +132,6 @@ let generateIntern = (Intern) => {
 };
 
 let addEmployees = (manageData) => {
-  // const generateMarkdown = (manageData) => {
-  //  console.log(manageData);
   return `
  <!DOCTYPE html>
 <html lang="en">

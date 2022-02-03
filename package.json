@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "test": "jest",
-    "start": "index.js"
+    "test": "jest"
   },
   "devDependencies": {
     "jest": "^27.4.7"
