@@ -7,34 +7,6 @@ const addEmployees = require("./src/template-page");
 
 const manageData = [];
 
-// function addTeam() {
-//   inquirer
-//     .prompt([
-//       {
-//         type: "input",
-//         name: "teamName",
-//         message: "What is your team name?",
-//         validate: (team) => {
-//           if (!team) {
-//             console.log("Please enter a team name");
-//             return false;
-//           } else {
-//             return true;
-//           }
-//         },
-//       },
-//     ])
-//     .then((answers) => {
-//      manageData.push(answers);
-//       if (answers.teamName) {
-//         employeeQuestions();
-//         return true;
-//       } else {
-//         writeToFile('dist/index.html', addEmployees(manageData));
-//       }
-//     });
-// }
-
 const employeeQuestions = () => {
   inquirer
     .prompt([
