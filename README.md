@@ -13,7 +13,7 @@
   - [Questions](#questions)
 
   ## Installation
-  Download a zip file or create a clone and run `npm start` to answer the questions. After answering the questions, the application will generate the employee cards.
+  Download a zip file or create a clone and run `node index.js` to answer the questions. After answering the questions, the application will generate the employee cards.
 
   ## Usage
   This is a fast and easy process to manage you team members whereabouts as everyone moves through different projects and sections.
@@ -25,7 +25,11 @@
   This was a fully generated application using Bootstrap, Javascript, Node.js, Inquirer, and Jest.
 
   ## Tests
-  Download or clone the repository then type ` npm start` to answer the prompts. After all prompt are completed, team cards will be generated.
+  Download or clone the repository then type:
+  ```
+  node index.js
+  ```
+  Then answer the prompts. After all prompt are completed, team cards will be generated.
   
 ----
   ## Questions

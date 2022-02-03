@@ -160,7 +160,7 @@ let addEmployees = (manageData) => {
   </head>
   <body style="font-family: 'Dongle', sans-serif; font-size:1.5em;">
     <header align="center" class="bg-dark text-white" style="height:80px;">
-      My Team
+      <h1>$</h1>
     </header>
     <section align="center" style="height:auto;">
       <div class="container" style="height:auto; margin-top:50px;">

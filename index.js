@@ -7,33 +7,33 @@ const addEmployees = require("./src/template-page");
 
 const manageData = [];
 
-// function addTeam() {
-//   inquirer
-//     .prompt([
-//       {
-//         type: "input",
-//         name: "teamName",
-//         message: "What is your team name?",
-//         validate: (team) => {
-//           if (!team) {
-//             console.log("Please enter a team name");
-//             return false;
-//           } else {
-//             return true;
-//           }
-//         },
-//       },
-//     ])
-//     .then((answers) => {
-//      manageData.push(answers);
-//       if (answers.teamName) {
-//         employeeQuestions();
-//         return true;
-//       } else {
-//         writeToFile('dist/index.html', addEmployees(manageData));
-//       }
-//     });
-// }
+function addTeam() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "teamName",
+        message: "What is your team name?",
+        validate: (team) => {
+          if (!team) {
+            console.log("Please enter a team name");
+            return false;
+          } else {
+            return true;
+          }
+        },
+      },
+    ])
+    .then((answers) => {
+     manageData.push(answers);
+      if (answers.teamName) {
+        employeeQuestions();
+        return true;
+      } else {
+        writeToFile('dist/index.html', addEmployees(manageData));
+      }
+    });
+};
 
 const employeeQuestions = () => {
   inquirer
@@ -82,8 +82,8 @@ const employeeQuestions = () => {
             console.log("Employee: Please enter your EMAIL ADDRESS");
             return false;
           }
-        },
-      },
+        }
+      }
     ])
     .then(function (answers) {
       if (answers.role === "Engineer") {
@@ -116,7 +116,7 @@ const addManager = (managerAnswers) => {
         type: "confirm",
         name: "addMore",
         message: "Manager: Would you like to add an Engineer or Intern?"
-      },
+      }
     ])
     .then(function (answers) {
       const newManager = new Manager(
@@ -133,7 +133,7 @@ const addManager = (managerAnswers) => {
         writeToFile('dist/index.html', addEmployees(manageData));
       }
     });
-}
+};
 
 const addEngineer = (engineerAnswers) => {
   inquirer
@@ -147,7 +147,7 @@ const addEngineer = (engineerAnswers) => {
         type: "confirm",
         name: "addMore",
         message: "Manager: Would you like to add an Engineer or Intern?"
-      },
+      }
     ])
     .then(function (answers) {
       const newEngineer = new Engineer(
@@ -178,7 +178,7 @@ const addIntern = (internAnswers) => {
         type: "confirm",
         name: "addMore",
         message: "Manager: Would you like to add an Engineer or Intern?"
-      },
+      }
     ])
     .then(function (answers) {
       const newIntern = new Intern(
@@ -204,4 +204,4 @@ function writeToFile(filename,data) {
   })
 };
 
-employeeQuestions();
+addTeam();
