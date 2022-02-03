@@ -8,15 +8,27 @@ function addCards(manageData) {
     const employeeArray = manageData[i];
     switch(employeeArray.getRole()) {
       case 'Manager':
-        const manager = new Manager(employeeArray.id, employeeArray.name, employeeArray.email, employeeArray.officeNumber);
+        const manager = new Manager(
+          employeeArray.name, 
+          employeeArray.id, 
+          employeeArray.email, 
+          employeeArray.officeNumber);
         cards.push(generateManager(manager));
         break;
       case 'Engineer':
-        const engineer = new Engineer(employeeArray.id, employeeArray.name, employeeArray.email, employeeArray.github);
+        const engineer = new Engineer(
+          employeeArray.name, 
+          employeeArray.id, 
+          employeeArray.email, 
+          employeeArray.github);
         cards.push(generateEngineer(engineer));
         break;
       case 'Intern':
-        const intern = new Intern(employeeArray.id, employeeArray.name, employeeArray.email, employeeArray.school);
+        const intern = new Intern(
+          employeeArray.name, 
+          employeeArray.id, 
+          employeeArray.email, 
+          employeeArray.school);
         cards.push(generateIntern(intern));
         break;
     }
@@ -44,7 +56,7 @@ let generateManager = (Manager) => {
                   Email: ${Manager.getEmail()}
                 </li>
                 <li class="list-group-item">
-                  Office #: ${Manager.getOfficeNumber()}
+                  Office#: ${Manager.getOfficeNumber()}
                 </li>
               </ul>
             </div>
