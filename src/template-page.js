@@ -1,17 +1,6 @@
 const Manager = require("../lib/Manager");
 const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
-const fs = require('fs');
-const path = require('path');
-
-fs.readFile(path.join(__dirname, 'index.js'), 'utf-8', (err, data) => {
-  if(err) throw err;
-
-  console.log(data, 'from template-page');
-})
-
-
-
 
 function addCards(manageData) {
   let cards = [];
@@ -133,8 +122,6 @@ let generateIntern = (Intern) => {
 };
 
 let addEmployees = (manageData) => {
-  // const generateMarkdown = (manageData) => {
-  //  console.log(manageData);
   return `
  <!DOCTYPE html>
 <html lang="en">
