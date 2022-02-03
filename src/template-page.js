@@ -98,7 +98,7 @@ let generateEngineer = (Engineer) => {
                 Email: ${Engineer.getEmail()}
                </li>
                <li class="list-group-item">
-                GitHub Username: ${Engineer.github()}
+                GitHub Username: ${Engineer.getGithub()}
                </li>
              </ul>
            </div>
