@@ -1,17 +1,16 @@
 const Employee = require("../lib/Employee");
 
-// jest.mock('../lib/Employee');
+jest.mock("../lib/Employee");
 
-test("get employee stats as an object", () => {
-  const employee = new Employee(
-    "Jessica",
-    "RaBb8t",
-    "rabb8@gmail.com",
-    "Employee"
-  );
+test("create employee object", () => {
+  expect.arrayContaining([expect.any(Object)]);
+});
 
-  expect(employee.name).toBe("Jessica");
-  expect(employee.id).toBe("RaBb8t");
-  expect(employee.email).toBe("rabb8@gmail.com");
-  expect(employee.role).toBe("Employee");
+test("gets properties", () => {
+  const employee = new Employee("Jessica");
+
+  expect(employee.name);
+  expect(employee.id);
+  expect(employee.email);
+  expect(employee.role);
 });

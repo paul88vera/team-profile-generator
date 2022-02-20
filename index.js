@@ -2,7 +2,7 @@ const inquirer = require("inquirer");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-const fs = require('fs');
+const fs = require("fs");
 const addEmployees = require("./src/template-page");
 
 const manageData = [];
@@ -15,7 +15,7 @@ const employeeQuestions = () => {
         name: "role",
         message: "Employee: What is your role here?",
         choices: ["Manager", "Engineer", "Intern"],
-        default: false
+        default: false,
       },
       {
         type: "input",
@@ -87,7 +87,7 @@ const addManager = (managerAnswers) => {
       {
         type: "confirm",
         name: "addMore",
-        message: "Manager: Would you like to add an Engineer or Intern?"
+        message: "Manager: Would you like to add an Engineer or Intern?",
       },
     ])
     .then(function (answers) {
@@ -102,10 +102,10 @@ const addManager = (managerAnswers) => {
         employeeQuestions();
       } else {
         console.log(manageData);
-        writeToFile('dist/index.html', addEmployees(manageData));
+        writeToFile("dist/index.html", addEmployees(manageData));
       }
     });
-}
+};
 
 const addEngineer = (engineerAnswers) => {
   inquirer
@@ -113,12 +113,12 @@ const addEngineer = (engineerAnswers) => {
       {
         type: "input",
         name: "github",
-        message: "Engineer: What is their GitHub username?"
+        message: "Engineer: What is their GitHub username?",
       },
       {
         type: "confirm",
         name: "addMore",
-        message: "Manager: Would you like to add an Engineer or Intern?"
+        message: "Manager: Would you like to add an Engineer or Intern?",
       },
     ])
     .then(function (answers) {
@@ -133,7 +133,7 @@ const addEngineer = (engineerAnswers) => {
         employeeQuestions();
       } else {
         console.log(manageData);
-        writeToFile('dist/index.html', addEmployees(manageData));
+        writeToFile("dist/index.html", addEmployees(manageData));
       }
     });
 };
@@ -144,12 +144,12 @@ const addIntern = (internAnswers) => {
       {
         type: "input",
         name: "school",
-        message: "Intern: What school do they attend?"
+        message: "Intern: What school do they attend?",
       },
       {
         type: "confirm",
         name: "addMore",
-        message: "Manager: Would you like to add an Engineer or Intern?"
+        message: "Manager: Would you like to add an Engineer or Intern?",
       },
     ])
     .then(function (answers) {
@@ -164,16 +164,16 @@ const addIntern = (internAnswers) => {
         employeeQuestions();
       } else {
         console.log(manageData);
-        writeToFile('dist/index.html', addEmployees(manageData));
+        writeToFile("dist/index.html", addEmployees(manageData));
       }
     });
 };
 
-function writeToFile(filename,data) {
+function writeToFile(filename, data) {
   fs.writeFile(filename, data, (err) => {
-      if(err) throw err;
-      console.log('File successfully saved!');
-  })
-};
+    if (err) throw err;
+    console.log("File successfully saved!");
+  });
+}
 
 employeeQuestions();

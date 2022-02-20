@@ -6,29 +6,32 @@ function addCards(manageData) {
   let cards = [];
   for (let i = 0; i < manageData.length; i++) {
     const employeeArray = manageData[i];
-    switch(employeeArray.getRole()) {
-      case 'Manager':
+    switch (employeeArray.getRole()) {
+      case "Manager":
         const manager = new Manager(
-          employeeArray.name, 
-          employeeArray.id, 
-          employeeArray.email, 
-          employeeArray.officeNumber);
+          employeeArray.name,
+          employeeArray.id,
+          employeeArray.email,
+          employeeArray.officeNumber
+        );
         cards.push(generateManager(manager));
         break;
-      case 'Engineer':
+      case "Engineer":
         const engineer = new Engineer(
-          employeeArray.name, 
-          employeeArray.id, 
-          employeeArray.email, 
-          employeeArray.github);
+          employeeArray.name,
+          employeeArray.id,
+          employeeArray.email,
+          employeeArray.github
+        );
         cards.push(generateEngineer(engineer));
         break;
-      case 'Intern':
+      case "Intern":
         const intern = new Intern(
-          employeeArray.name, 
-          employeeArray.id, 
-          employeeArray.email, 
-          employeeArray.school);
+          employeeArray.name,
+          employeeArray.id,
+          employeeArray.email,
+          employeeArray.school
+        );
         cards.push(generateIntern(intern));
         break;
     }
@@ -53,7 +56,7 @@ let generateManager = (Manager) => {
                   ID: ${Manager.getId()}
                 </li>
                 <li class="list-group-item">
-                  Email: ${Manager.getEmail()}
+                Email:<a href="mailto:${Manager.getEmail()}" class="text-blue text-decoration-none"> ${Manager.getEmail()}</a>
                 </li>
                 <li class="list-group-item">
                   Office#: ${Manager.getOfficeNumber()}
@@ -81,10 +84,10 @@ let generateEngineer = (Engineer) => {
                 ID: ${Engineer.getId()}
                </li>
                <li class="list-group-item">
-                Email: ${Engineer.getEmail()}
+                Email: <a href="mailto:${Engineer.getEmail()}" class="text-blue text-decoration-none">${Engineer.getEmail()}</a>
                </li>
                <li class="list-group-item">
-                GitHub Username: ${Engineer.getGithub()}
+                GitHub Username:<a href="https://github.com/${Engineer.getGithub()}/" class="text-blue text-decoration-none"> ${Engineer.getGithub()}
                </li>
              </ul>
            </div>
@@ -110,7 +113,7 @@ let generateIntern = (Intern) => {
       ID: ${Intern.getId()}
      </li>
      <li class="list-group-item">
-      Email: ${Intern.getEmail()}
+      Email:<a href="mailto:${Intern.getEmail()}" class="text-blue text-decoration-none"> ${Intern.getEmail()}</a>
      </li>
      <li class="list-group-item">
       School: ${Intern.getSchool()}
