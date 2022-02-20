@@ -56,7 +56,7 @@ let generateManager = (Manager) => {
                   ID: ${Manager.getId()}
                 </li>
                 <li class="list-group-item">
-                Email:<a href="mailto:${Manager.getEmail()}" class="text-blue text-decoration-none"> ${Manager.getEmail()}</a>
+                Email: <a href="mailto:${Manager.getEmail()}" class="text-blue text-decoration-none">${Manager.getEmail()}</a>
                 </li>
                 <li class="list-group-item">
                   Office#: ${Manager.getOfficeNumber()}
@@ -87,7 +87,7 @@ let generateEngineer = (Engineer) => {
                 Email: <a href="mailto:${Engineer.getEmail()}" class="text-blue text-decoration-none">${Engineer.getEmail()}</a>
                </li>
                <li class="list-group-item">
-                GitHub Username:<a href="https://github.com/${Engineer.getGithub()}/" class="text-blue text-decoration-none"> ${Engineer.getGithub()}
+                GitHub Username: <a href="https://github.com/${Engineer.getGithub()}/" class="text-blue text-decoration-none" target="blank">${Engineer.getGithub()}</a>
                </li>
              </ul>
            </div>
@@ -113,7 +113,7 @@ let generateIntern = (Intern) => {
       ID: ${Intern.getId()}
      </li>
      <li class="list-group-item">
-      Email:<a href="mailto:${Intern.getEmail()}" class="text-blue text-decoration-none"> ${Intern.getEmail()}</a>
+      Email: <a href="mailto:${Intern.getEmail()}" class="text-blue text-decoration-none">${Intern.getEmail()}</a>
      </li>
      <li class="list-group-item">
       School: ${Intern.getSchool()}
