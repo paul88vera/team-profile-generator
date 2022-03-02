@@ -87,7 +87,7 @@ const addManager = (managerAnswers) => {
       {
         type: "confirm",
         name: "addMore",
-        message: "Manager: Would you like to add an Engineer or Intern?",
+        message: "Manager: Would you like to add a Manager, Engineer, or Intern?",
       },
     ])
     .then(function (answers) {
@@ -101,7 +101,6 @@ const addManager = (managerAnswers) => {
       if (answers.addMore === true) {
         employeeQuestions();
       } else {
-        console.log(manageData);
         writeToFile("dist/index.html", addEmployees(manageData));
       }
     });
@@ -132,7 +131,6 @@ const addEngineer = (engineerAnswers) => {
       if (answers.addMore === true) {
         employeeQuestions();
       } else {
-        console.log(manageData);
         writeToFile("dist/index.html", addEmployees(manageData));
       }
     });
@@ -163,7 +161,6 @@ const addIntern = (internAnswers) => {
       if (answers.addMore === true) {
         employeeQuestions();
       } else {
-        console.log(manageData);
         writeToFile("dist/index.html", addEmployees(manageData));
       }
     });

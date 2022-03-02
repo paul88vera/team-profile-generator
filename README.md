@@ -12,6 +12,7 @@
   - [Questions](#questions)
 
   ## Installation
+  [View Tutorial Here](https://drive.google.com/file/d/1YRYgfbHNfGhrZ43zXU-jKlHabXAoTfvC/view) |
   Download a zip file or create a clone and run `node index.js` to answer the questions. After answering the questions, the application will generate the employee cards.
 
   ## Usage
